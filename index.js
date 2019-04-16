@@ -53,15 +53,7 @@ class SelectField extends React.PureComponent {
       <RebassTextfield
         {...props}
         as="select"
-        border={
-          !this.props.border
-            ? {
-                border: '1px solid #909090',
-              }
-            : {
-                border: props.border,
-              }
-        }
+        border={!this.props.border ? '1px solid #909090' : props.border}
       >
         {props.children}
       </RebassTextfield>
