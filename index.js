@@ -47,16 +47,57 @@ const RebassTextfield = styled(Card)`
 `;
 
 class SelectField extends React.PureComponent {
+  state = {
+    opacity: '0',
+  };
+
+  componentDidMount() {
+    if (this.props.value) {
+      this.setState({ opacity: '1' });
+    }
+  }
+
+  switchToDate = () => {
+    this.setState({ opacity: '1' });
+  };
+
+  switchToText = e => {
+    const { value } = e.target;
+
+    if (value === '') {
+      this.setState({ opacity: '0' });
+    }
+  };
+
   render() {
     const { ...props } = this.props;
     return (
-      <RebassTextfield
-        {...props}
-        as="select"
-        border={!this.props.border ? '1px solid #909090' : props.border}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: 'fit-content',
+        }}
       >
-        {props.children}
-      </RebassTextfield>
+        <legend
+          style={{
+            fontSize: '12px',
+            opacity: `${this.state.opacity}`,
+            transition: 'opacity .25s ease-in-out',
+          }}
+        >
+          {props.label}
+        </legend>
+        <RebassTextfield
+          {...props}
+          as="select"
+          border={!this.props.border ? '1px solid #909090' : props.border}
+          onFocus={this.switchToDate}
+          onBlur={this.switchToText}
+        >
+          {props.children}
+        </RebassTextfield>
+      </div>
     );
   }
 }
