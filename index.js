@@ -52,16 +52,16 @@ class SelectField extends React.PureComponent {
   };
 
   componentDidMount() {
-    if (this.props.value) {
-      this.setState({ opacity: '1' });
+    if (this.props.value === '' || this.props.value === null) {
+      this.setState({ opacity: '0' });
     }
   }
 
-  switchToDate = () => {
+  showLabel = () => {
     this.setState({ opacity: '1' });
   };
 
-  switchToText = e => {
+  hideLabel = e => {
     const { value } = e.target;
 
     if (value === '') {
@@ -84,6 +84,7 @@ class SelectField extends React.PureComponent {
             fontSize: '12px',
             opacity: `${this.state.opacity}`,
             transition: 'opacity .25s ease-in-out',
+            marginTop: '-18px',
           }}
         >
           {props.label}
@@ -92,8 +93,8 @@ class SelectField extends React.PureComponent {
           {...props}
           as="select"
           border={!this.props.border ? '1px solid #909090' : props.border}
-          onFocus={this.switchToDate}
-          onBlur={this.switchToText}
+          onFocus={this.showLabel}
+          onBlur={this.hideLabel}
         >
           {props.children}
         </RebassTextfield>
