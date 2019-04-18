@@ -22,7 +22,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Card } from 'rebass';
+import { Box, Card } from 'rebass';
 
 const RebassTextfield = styled(Card)`
   outline: none;
@@ -72,12 +72,16 @@ class SelectField extends React.PureComponent {
   render() {
     const { ...props } = this.props;
     return (
-      <div
+      <Box
         style={{
           display: 'flex',
           flexDirection: 'column',
           width: 'fit-content',
         }}
+        margin={this.props.margin}
+        marginTop={this.props.marginTop}
+        marginLeft={this.props.marginLeft}
+        marginRight={this.props.marginRight}
       >
         <legend
           style={{
@@ -92,13 +96,17 @@ class SelectField extends React.PureComponent {
         <RebassTextfield
           {...props}
           as="select"
+          margin="0"
+          marginTop="0"
+          marginLeft="0"
+          marginRight="0"
           border={!this.props.border ? '1px solid #909090' : props.border}
           onFocus={this.showLabel}
           onBlur={this.hideLabel}
         >
           {props.children}
         </RebassTextfield>
-      </div>
+      </Box>
     );
   }
 }
