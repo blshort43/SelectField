@@ -116,12 +116,10 @@ class SelectField extends React.PureComponent {
           onBlur={this.handleBlur}
         >
           {this.state.showPlaceholder ? (
-            <option value="" hidden>
-              {props.label}
-            </option>
+            <option value="">{props.label}</option>
           ) : (
-            <option label="" hidden>
-              {props.label}
+            <option value={null} disabled selected>
+              select an option
             </option>
           )}
 
