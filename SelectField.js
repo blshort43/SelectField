@@ -8,9 +8,7 @@
 // NOTE Example:
 // <SelectField
 // required
-// <option value="" hidden>
-//   PTO Type
-// </option>
+// <option value="" hidden />
 // {data.map(type => (
 //   <option key={type.PTOID} value={type.PTOID}>
 //     {type.NameX}
@@ -117,11 +115,7 @@ class SelectField extends React.PureComponent {
         >
           {this.state.showPlaceholder ? (
             <option value="">{props.label}</option>
-          ) : (
-            <option value={null} disabled selected>
-              select an option
-            </option>
-          )}
+          ) : null}
 
           {props.children}
         </StyledSelectField>
