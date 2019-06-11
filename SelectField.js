@@ -7,7 +7,7 @@
 // NOTE Use 'required' on SelectField and <option value="" hidden/> to display a faded default value
 // NOTE Example:
 
-// handleChange = e => {
+// handlePtoSelect = e => {
 //   e.preventDefault();
 //   const { value } = e.target;
 //   this.setState({ ptoType: value });
