@@ -4,18 +4,30 @@
  * SelectField
  *
  */
-// NOTE Use 'required' on SelectField and <option value="" hidden/> to display an inactive default value
+// NOTE Use 'required' on SelectField and <option value="" hidden/> to display a faded default value
 // NOTE Example:
+
+// handleChange = e => {
+//   e.preventDefault();
+//   const { value } = e.target;
+//   this.setState({ ptoType: value });
+// };
+
 // <SelectField
-// required
-// <option value="" hidden />
-// {data.map(type => (
-//   <option key={type.PTOID} value={type.PTOID}>
+//  required
+//  label="PTO Type"
+//  name="ptoType"
+//  value={ptoType || ''}
+//  border={this.state.typeBorder}
+// onChange={this.handleChange}
+//  >
+//  <option value="" hidden />
+//  {data.map(type => (
+//    <option key={type.PTOID} value={type.PTOID}>
 //     {type.NameX}
-//   </option>
-// ))}
-// </SelectField>
-// </div>
+//    </option>
+//  ))}
+// </SelectField>;
 
 import React from 'react';
 import PropTypes from 'prop-types';
